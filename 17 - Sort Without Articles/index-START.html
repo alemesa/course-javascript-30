@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sort Without Articles</title>
+    <link rel="stylesheet" type="" href="styles.css">
+</head>
+
+<body>
+
+    <ul id="bands"></ul>
+
+    <script>
+        //MY SOLUTION
+        /*     const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+               const trimmedBands = [];
+               const list = document.querySelector("#bands");
+
+               bands.forEach(band => {
+                   let temporal = '';
+                   if (band.startsWith('The ')) {
+                       temporal = band.replace(/The /, "");
+                   } else if (band.startsWith('A ')) {
+                       temporal = band.replace(/A /, "");
+                   } else if (band.startsWith('An ')) {
+                       temporal = band.replace(/An /, "");
+                   } else {
+                       temporal = band;
+                   }
+                   trimmedBands.push(temporal);
+
+               });
+
+               trimmedBands.sort();
+
+               trimmedBands.forEach(band => {
+                   list.innerHTML += `<li>${band}</li>`;
+               });
+
+               console.log(trimmedBands);          */
+
+        //WES SOLUTION
+        const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+        function strip(bandName) {
+            return bandName.replace(/^(a |the |an )/i, '').trim();
+        }
+
+        const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
+        document.querySelector('#bands').innerHTML =
+            sortedBands
+            .map(band => `<li>${band}</li>`)
+            .join('');
+
+        console.log(sortedBands);
+    </script>
+
+</body>
+
+</html>
